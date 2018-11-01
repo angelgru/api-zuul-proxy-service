@@ -1,5 +1,6 @@
 package com.angel.apizuulproxyservice;
 
+import com.angel.apizuulproxyservice.filters.PostFilter;
 import com.angel.apizuulproxyservice.filters.PreFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,5 +20,10 @@ public class ApiZuulProxyServiceApplication {
     @Bean
     public PreFilter preFilter() {
         return new PreFilter();
+    }
+
+    @Bean
+    public PostFilter postFilter() {
+        return new PostFilter();
     }
 }
