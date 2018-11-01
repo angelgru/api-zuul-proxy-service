@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: API-GATEWAY
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+
+#ignored-services * tells Zuul to not create default paths/routes for the discovered services automatically
+zuul:
+  prefix: /api
+  ignored-services: '*'
+  routes:
+    account-service:
+      path: /accounts/**
+      serviceId: ACCOUNT-SERVICE
+    customer-service:
+      path: /customers/**
+      serviceId: CUSTOMER-SERVICE
+  host:
+    socket-timeout-millis: 3000
